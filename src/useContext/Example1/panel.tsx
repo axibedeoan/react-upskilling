@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "./themeContext";
-import "./panel.scss";
+import styles from "/.styles.module.scss";
+import cx from "classnames";
 
 type PanelProps = {
   title: string;
@@ -12,7 +13,7 @@ export function Panel({ title, children }: PanelProps) {
   const className = "panel-" + theme;
 
   return (
-    <div className={className}>
+    <div className={cx(styles.panel)}>
       <h1>{title}</h1>
       {children}
     </div>
