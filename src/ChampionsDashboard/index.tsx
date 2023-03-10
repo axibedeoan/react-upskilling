@@ -8,8 +8,8 @@ export function ChampionsDashboard() {
   const [filteredList, setFilteredList] = useState<any[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [list, setList] = useState<string>("Champions List");
-  const url =
-    "https://api.pandascore.co/lol/champions?sort=&page=1&per_page=50&token=32Z07SHHYAwfWC7JEvbwWWk7LEHUUc29rIaexmkwm5P3ZIxmJj4";
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const url = `https://api.pandascore.co/lol/champions?sort=&page=${currentPage}&per_page=25&token=32Z07SHHYAwfWC7JEvbwWWk7LEHUUc29rIaexmkwm5P3ZIxmJj4`;
 
   const options = { method: "GET", headers: { accept: "application/json" } };
 
@@ -18,10 +18,10 @@ export function ChampionsDashboard() {
       .then((response) => response.json())
       .then((response) => setData(response))
       .catch((err) => console.error(err));
-  }, []);
+  }, [currentPage]);
 
   const searchChampion = (name: string) => {
-    const url = `https://api.pandascore.co/lol/champions?sort=&search[name]=${name}&page=1&per_page=50&token=32Z07SHHYAwfWC7JEvbwWWk7LEHUUc29rIaexmkwm5P3ZIxmJj4`;
+    const url = `https://api.pandascore.co/lol/champions?sort=&search[name]=${name}&page=1&per_page=25&token=32Z07SHHYAwfWC7JEvbwWWk7LEHUUc29rIaexmkwm5P3ZIxmJj4`;
     fetch(url, options)
       .then((response) => response.json())
       .then((response) => setData(response))
@@ -70,6 +70,12 @@ export function ChampionsDashboard() {
       ) : (
         <ChampionsList list={watchList} />
       )}
+      <button onClick={() => setCurrentPage((current) => current - 1)}>
+        Previous
+      </button>
+      <button onClick={() => setCurrentPage((current) => current + 1)}>
+        Next
+      </button>
     </WatchListContext.Provider>
   );
 }
