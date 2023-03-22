@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Champion } from "./utils";
 import { ChampionActions } from "./ChampionActions";
 import { ChampionDetails } from "./ChampionDetails";
+import "./ChampionCard.scss";
 
 type ChampionCardProps = {
   champion: Champion;
@@ -9,10 +10,13 @@ type ChampionCardProps = {
 
 export function ChampionCard({ champion }: ChampionCardProps) {
   return (
-    <div>
-      <p>
-        Champion {champion.id} {champion.name}
-      </p>
+    <div className={"champion-card"}>
+      <img
+        className={"champion-img"}
+        src={champion.big_image_url}
+        alt={champion.name}
+      />
+      <div className={"champion-name"}>{champion.name}</div>
       <ChampionDetails />
       <ChampionActions champion={champion} />
     </div>

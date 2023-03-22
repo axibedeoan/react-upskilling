@@ -25,3 +25,28 @@ export type Champion = {
   spellblockperlevel: number;
   videogame_versions: string[];
 };
+
+export const championDetails = [
+  "armor",
+  "armorperlevel",
+  "attackdamage",
+  "attackdamageperlevel",
+  "attackrange",
+  "attackspeedoffset",
+  "attackspeedperlevel",
+  "crit",
+  "critperlevel",
+  "hp",
+  "hpperlevel",
+  "hpregen",
+  "hpregenperlevel",
+  "id",
+  "movespeed",
+  "mp",
+  "mpperlevel",
+  "mpregen",
+  "mpregenperlevel",
+  "name",
+  "spellblock",
+  "spellblockperlevel",
+];
